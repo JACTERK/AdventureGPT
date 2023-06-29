@@ -2,19 +2,23 @@
 
 import functions
 
+character_details = "[NAME(String), ROLE(String), PERSONALITY(string), HEALTH(Int), ATTACK(Int), DEFENCE(Int), " \
+                    "INVENTORY(List), LOCATION(String)]"
+
 msg = "The response to the following query needs to be in the format of a python list. It should be laid " \
-      "out in the following way: [NAME(String), RACE(String), ROLE(String), HEALTH(Int), ATTACK(Int), DEFENCE(Int), INVENTORY(List), LOCATION(String)]. As " \
+      "out in the following way: [NAME(String), ROLE(String), PERSONALITY(String), HEALTH(Int), " \
+      "ATTACK(Int), DEFENCE(Int), INVENTORY(List), LOCATION(String)]. As " \
       "additional context, 'race' can be things like 'human', 'dog', 'horse' etc. depending on the contents of the " \
       "message. 'role' is the job or role the entity serves, 'health', 'attack', and 'defence' are all to be defined " \
-      "in the following message. 'inventory' is an empty list, and 'location' is the zone the entity is in. I am " \
-      "making a character in a fantasy based RPG game. "
-
-
+      "in the following message. 'inventory' is an empty list, and 'location' is the zone the entity is in. The " \
+      "PERSONALITY is a description of the character, and can be anything, as long as it details at least " \
+      "100 words about the character's personality.." 
+ 
+ 
 def create_character(c):
     print("CREATE")
 
-    c = "The character's name is John, and he is a human farmer. He has 100 health, 10 attack, and 10 defense. He has" \
-        + "a torch, and a bottle of water in his inventory, and is currently in centretown."
+    c = ""
 
     t = functions.generate([{"role": "system", "content": msg}, {"role": "user", "content": c}])
 
@@ -24,10 +28,10 @@ def create_character(c):
 class Entity:
     # Constructor
 
-    def __init__(self, name, race, role, health, attack, defense, inventory, location):
+    def __init__(self, name, role, personality, health, attack, defense, inventory, location):
         self.name = name
-        self.race = race
         self.role = role
+        self.personality = personality
         self.health = health
         self.attack = attack
         self.defense = defense
@@ -39,11 +43,11 @@ class Entity:
     def get_name(self):
         return self.name
 
-    def get_race(self):
-        return self.race
-
     def get_role(self):
         return self.role
+
+    def get_personality(self):
+        return self.personality
 
     def get_health(self):
         return self.health
@@ -63,11 +67,11 @@ class Entity:
     def set_name(self, name):
         self.name = name
 
-    def set_race(self, race):
-        self.race = race
-
     def set_role(self, role):
         self.role = role
+
+    def set_personality(self, personality):
+        self.personality = personality
 
     def set_health(self, health):
         self.health = health
@@ -92,3 +96,4 @@ class Entity:
             + str(self.location)
 
     # Function to generate a new entity
+

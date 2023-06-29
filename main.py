@@ -4,7 +4,7 @@
 # the ability to generate npc characters that can interact, and the ability to generate a world where the characters
 # can interact with.
 
-import functions, entity
+import functions, character
 
 #print(functions.generate([{"role": "system", "content": "You are a farmer named john."},
 #                          {"role": "user", "content": "what is your name, and what do you do?"}
@@ -23,7 +23,7 @@ c = "The character's name is John, and he is a human farmer. He has 100 health, 
     "items in his inventory, and is currently in centretown." \
 
 
-print(entity.create_character(c))
+print(functions.create_entities(3))
 
 #John = entity.Entity(entity.create_character(c))
 

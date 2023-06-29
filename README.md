@@ -21,7 +21,7 @@ OPENAI_API_KEY=<your openai api key>
 - Run the game using `python main.py` or by using one of the startup scripts.
 
 ## Features to add:
-There are a few features I want to still add to the project. Some of those are:
+There are a few feature still to add to the project. Some of those are:
 
 - [ ] Add a way to save the game, as well as load it from a file.
 - [ ] Add a better way to interact with the game, such as a GUI.

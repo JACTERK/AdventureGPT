@@ -1,16 +1,30 @@
-# This is a sample Python script.
+# Created with <3 by Jacob Terkuc
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+# works like a generated text based game. allows for a few different features, including a user character,
+# the ability to generate npc characters that can interact, and the ability to generate a world where the characters
+# can interact with.
+
+import functions, entity
+
+#print(functions.generate([{"role": "system", "content": "You are a farmer named john."},
+#                          {"role": "user", "content": "what is your name, and what do you do?"}
+#                          ]))
+
+#John = entity.Entity("John", "Farmer", 100, 10, 10, [], "Farm")
+
+msg = "The response to the following query needs to be in the format of a function call. The function call is laid " \
+      "out in the following way: Entity('name', 'race', 'role', health, attack, defense, inventory, location). As " \
+      "additional context, 'race' can be things like 'human', 'dog', 'horse' etc. depending on the contents of the " \
+      "message. 'role' is the job or role the entity serves, 'health', 'attack', and 'defence' are all to be defined " \
+      "in the following message. 'inventory' is an empty list, and 'location' is the zone the entity is in. I am " \
+      "making a character in a fantasy based RPG game. "
+
+c = "The character's name is John, and he is a human farmer. He has 100 health, 10 attack, and 10 defense. He has no " \
+    "items in his inventory, and is currently in centretown." \
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+print(entity.create_character(c))
 
+#John = entity.Entity(entity.create_character(c))
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+#print(John)

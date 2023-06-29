@@ -23,26 +23,40 @@ def generate(msg):
     return response
 
 
-# Function that takes an integer 'num', and an optional string 'desc' and returns a list of 'num' entities.
-# If 'desc' is not provided, it will default to creating 'num' random entities of type 'race'.
-def create_entities(num, desc=""):
-    print("Creating entities...")
-    entities = []
-    e_calls = []
+# Function that takes an integer 'num', and an optional string 'desc' and returns a list of 'num' character.
+# If 'desc' is not provided, it will default to creating 'num' random character of type 'race'.
+def create_character(num, desc=""):
+    print("Creating character...")
+    c_list = []
+    c_calls = []
 
-    character_details = "[NAME(String), ROLE(String), PERSONALITY(string), HEALTH(Int), ATTACK(Int), DEFENCE(Int), " \
-                        "INVENTORY(List), LOCATION(String)]"
+    if desc == "":
+        prompt = "You are tasked to make up " + str(num) + " character in a " + settings.game_style + \
+                 "-style game. " \
+                 "Output your responses as a list of python lists, the length of the list being the number of " \
+                 "character needing to be created, and each of the nested lists separated with '\n\n', and laid out " \
+                 "like: " + str(character.character_details) + \
+                 ". Make sure none of the characters you create identical, and that they are all unique. An " \
+                 "example of a character that you could create is: ['John', 'John is a farmer who lives in Centretown. " \
+                 "He loves nature, and frequently likes going on walks through nature. He is kind and responds to other " \
+                 "characters in a kind and relaxed tone. ' 'Farmer', 100, 10, 10, [], 'Centretown']. As additional " \
+                 "context, NAME is the name of the character, ROLE is the job that the character is tasked to do, " \
+                 "PERSONALITY is a short  'role' is the job or role the entity serves, HEALTH, ATTACK, " \
+                 "and DEFENCE are attributes that you can pick based on the character's ROLE. INVENTORY is a list of " \
+                 "items the character may have based on their ROLE, PERSONALITY is a description of the character, " \
+                 "and can be anything, as long as it details at least 100 words about the character's personality. For " \
+                 "the LOCATION, choose a location that would fit the ROLE that the entity has (ex. A farmer would be " \
+                 "located in a more rural area).You can pick from the following cities/zones: " + \
+                 str(settings.default_location)
 
-    prompt = "You are tasked to make up " + str(num) + " entities in a " + settings.game_style + "-style game. " \
-             + "Output your responses as a list of python lists, the length of the list being the number of " \
-             + "entities needing to be created, and each of the nested lists laid out like: " \
-             + character.character_details \
-             + "Make sure none of the characters you create identical, and that they are all unique. An " \
-             + "example of a character that you could create is: ['John', 'Human', 'Farmer', 100, 10, 10, [], " \
-             + "'Centretown']. As additional context, NAME is the name of the character, ROLE is the job that the character is tasked to do, PERSONALITY is a short  'role' is the job or role the entity serves, 'health', 'attack', and 'defence' are all to be defined in the following message. 'inventory' is an empty list, and 'location' is the zone the entity is in. The PERSONALITY is a description of the character, and can be anything, as long as it details at least 100 words about the character's personality.For the LOCATION, choose a location that would fit the ROLE that the entity has (ex. A farmer would be located in a more rural area).You can pick from the following cities/zones: " + settings.default_location
+        x = ast.literal_eval(generate([{"role": "system", "content": prompt}])["choices"][0]['message']['content'])
 
-    p = [{"role": "system", "content": prompt}]
+    else:
+        x = desc
 
-    return generate(p)
+    for i in range(len(x)):
+        c_list.append(character.Character(x[i][0], x[i][1], x[i][2], x[i][3], x[i][4], x[i][5], x[i][6], x[i][7]))
 
-    # return entities
+
+
+    return c_list

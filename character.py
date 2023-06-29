@@ -12,20 +12,10 @@ msg = "The response to the following query needs to be in the format of a python
       "message. 'role' is the job or role the entity serves, 'health', 'attack', and 'defence' are all to be defined " \
       "in the following message. 'inventory' is an empty list, and 'location' is the zone the entity is in. The " \
       "PERSONALITY is a description of the character, and can be anything, as long as it details at least " \
-      "100 words about the character's personality.." 
- 
- 
-def create_character(c):
-    print("CREATE")
-
-    c = ""
-
-    t = functions.generate([{"role": "system", "content": msg}, {"role": "user", "content": c}])
-
-    return t['choices'][0]['message']['content']
+      "100 words about the character's personality.."
 
 
-class Entity:
+class Character:
     # Constructor
 
     def __init__(self, name, role, personality, health, attack, defense, inventory, location):
@@ -91,9 +81,6 @@ class Entity:
     # String representation of the object
 
     def __str__(self):
-        return "Entity: " + self.name + ", Role: " + self.role + ", Health: " + str(self.health) + ", Attack: " + str(
-            self.attack) + ", Defense: " + str(self.defense) + ", Inventory: " + str(self.inventory) + ", Location: " \
-            + str(self.location)
-
-    # Function to generate a new entity
-
+        return "Entity: " + self.name + ", Role: " + self.role + ", Personality: " + self.personality + ", Health: " + str(
+            self.health) + ", Attack: " + str(self.attack) + ", Defense: " + str(self.defense) + ", Inventory: " + str(
+            self.inventory) + ", Location: " + str(self.location)

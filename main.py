@@ -4,25 +4,42 @@
 # the ability to generate npc characters that can interact, and the ability to generate a world where the characters
 # can interact with.
 
-import functions, character, ast, pickle
+import functions, character, ast, pickle, item, location
+
 
 # print(functions.generate([{"role": "system", "content": "You are a farmer named john."},
 #                          {"role": "user", "content": "what is your name, and what do you do?"}
 #                          ]))
 
-John = character.Character("John", "John is a nice farmer.", "Farmer", 100, 10, 10, [], "Farm")
+def test_1():
+    John = character.Character("John", "John is a nice farmer.", "Farmer", 100, 10, 10, [], "Farm")
 
-print(John)
+    print(John)
 
-John.save()
+    print(id(John))
+
+    John.save()
+
+    print(id(John))
+
+    Joe = character.load("John")
+
+    print(id(Joe))
+
+    return 0
 
 
+def test_2():
+    c = character.new()
+    print(c)
+    return 0
 
 
-#c = functions.create_character(2)
-#print(c[0])
-#print(c[1])
+def test_3():
+    loc = location.new("city")
+    print(loc)
 
-# John = entity.Entity(entity.create_character(c))
+
+test_3()
 
 # print(John)

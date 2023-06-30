@@ -77,23 +77,29 @@ has the following attributes:
   - `items`: A list of `Item` objects that are in the location. This is to be the same format as the output for 
   the `create_item()` function.
 
+### Step 3: Generating locations (`Location` Class)
+The third step in the game startup procedure is to generate the locations. The `Location` class is defined in `location.py`,
+and has the following attributes:
+- `name`: The name of the location.
+- `desc`: A description of the location.
+- `id`: The id of the location.
 
 
+### Step 4: Generating the game items (`Item` Class)
 
+The fourth step in the game startup procedure is to generate the game items. The `Item` class is defined in `item.py`,
+and has the following attributes:
 
-
-
-
-
-
-
-
-
+- `name`: The name of the item.
+- `desc`: A description of the item.
+- `id`: The id of the item.
 
 
 # Appendix
 
 ## Functions
+
+## `functions.py`
 
 ### generate(msg)
 - msg (str): The message to generate a response to.

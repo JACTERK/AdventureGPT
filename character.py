@@ -1,6 +1,6 @@
 # Class defining an entity in the game
 
-import functions
+import functions, pickle
 
 character_details = "[NAME(String), ROLE(String), PERSONALITY(string), HEALTH(Int), ATTACK(Int), DEFENCE(Int), " \
                     "INVENTORY(List), LOCATION(String)]"
@@ -13,6 +13,15 @@ msg = "The response to the following query needs to be in the format of a python
       "in the following message. 'inventory' is an empty list, and 'location' is the zone the entity is in. The " \
       "PERSONALITY is a description of the character, and can be anything, as long as it details at least " \
       "100 words about the character's personality.."
+
+
+# Function that takes a filename and returns the object stored in the file
+def load_object(filename):
+    try:
+        with open("save/" + filename + ".p", "rb") as f:
+            return pickle.load(f)
+    except Exception as ex:
+        print("Error during unpickling object (Possibly unsupported):", ex)
 
 
 class Character:
@@ -84,3 +93,8 @@ class Character:
         return "Entity: " + self.name + ", Role: " + self.role + ", Personality: " + self.personality + ", Health: " + str(
             self.health) + ", Attack: " + str(self.attack) + ", Defense: " + str(self.defense) + ", Inventory: " + str(
             self.inventory) + ", Location: " + str(self.location)
+
+    # Save the character to a file named after the character's name
+    def save(self):
+        pickle.dump(self, open("save/" + self.name + ".p", "wb"))
+        print("Saved character to file: " + self.name + ".p")

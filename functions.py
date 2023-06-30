@@ -57,6 +57,4 @@ def create_character(num, desc=""):
     for i in range(len(x)):
         c_list.append(character.Character(x[i][0], x[i][1], x[i][2], x[i][3], x[i][4], x[i][5], x[i][6], x[i][7]))
 
-
-
     return c_list

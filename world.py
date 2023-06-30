@@ -1,6 +1,6 @@
 # 'World' class definition used to store information about the world such as a list of characters, a description of the
 # type of game world, and a string of possible locations.
-import settings
+import settings, pickle
 
 
 class World:
@@ -51,3 +51,4 @@ class World:
 
     def __str__(self):
         return "World: " + self.desc + "\n" + "Locations: " + self.locations + "\n" + "Characters: " + str(self.characters)
+

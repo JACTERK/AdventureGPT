@@ -1,0 +1,4 @@
+pygame~=2.5.0
+PyTMX~=3.32
+openai~=0.27.2
+python-dotenv~=1.0.0

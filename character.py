@@ -1,5 +1,7 @@
 # Class defining a character in the game
 
+# TODO: Add a function to talk in discord
+
 import functions, pickle, settings, ast
 
 character_details = "[NAME(String), ROLE(String), PERSONALITY(string), HEALTH(Int), ATTACK(Int), DEFENCE(Int), " \

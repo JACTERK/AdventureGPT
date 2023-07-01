@@ -29,31 +29,6 @@ def test_1():
     return
 
 
-def test_2():
-    c = character.new()
-    print(c)
-    return
-
-
-def test_3():
-    loc = location.new("city")
-    print(loc)
-    return
-
-
-def test_4():
-    w = world.new()
-
-    Sword = item.new("sword")
-
-    print(Sword.get_identifier())
-
-    w.add_item(Sword)
-
-    print(w)
-    return
-
-
-test_4()
+test_1()
 
 # print(John)

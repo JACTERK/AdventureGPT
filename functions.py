@@ -35,6 +35,7 @@ def generate(msg):
 # If 'desc' is not provided, it will default to creating 'num' random character of type 'race'.
 
 
+# TODO: Possibly remove this function
 # Function that generates a random 8-digit 'id' string and returns it.
 def generate_id(length=8):
     letters_and_digits = string.ascii_letters + string.digits

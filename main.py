@@ -4,7 +4,7 @@
 # the ability to generate npc characters that can interact, and the ability to generate a world where the characters
 # can interact with.
 
-import functions, character, ast, pickle, item, location
+import functions, character, ast, pickle, item, location, world
 
 
 # print(functions.generate([{"role": "system", "content": "You are a farmer named john."},
@@ -26,20 +26,34 @@ def test_1():
 
     print(id(Joe))
 
-    return 0
+    return
 
 
 def test_2():
     c = character.new()
     print(c)
-    return 0
+    return
 
 
 def test_3():
     loc = location.new("city")
     print(loc)
+    return
 
 
-test_3()
+def test_4():
+    w = world.new()
+
+    Sword = item.new("sword")
+
+    print(Sword.get_identifier())
+
+    w.add_item(Sword)
+
+    print(w)
+    return
+
+
+test_4()
 
 # print(John)

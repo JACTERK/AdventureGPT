@@ -75,7 +75,12 @@ def test_3():
 
     return
 
+def test_4():
+    john = character.new()
+    print(john)
 
-test_3()
+test_4()
+
+
 
 # print(John)

@@ -30,16 +30,49 @@ def test_1():
 
 
 def test_2():
-    c = character.new()
-    print(c)
+    c1 = {"role": "user", "content": "what is your name, and what do you do?"}
+    c2 = {"role": "system", "content": "You are a farmer named john."}
+    c3 = {"role": "user", "content": "what is your name, and what do you do?"}
+
+    John = character.Character("John", "John is a nice farmer.", "Farmer", 100, 10, 10, [], "Farm")
+    Mary = character.Character("Mary", "Mary is a nice farmer.", "Farmer", 100, 10, 10, [], "Farm")
+    Sue = character.Character("Sue", "Sue is a nice farmer.", "Farmer", 100, 10, 10, [], "Farm")
+
+    d = {John: [{"role": "user", "content": "what is your name, and what do you do?"},
+                {"role": "system", "content": "You are a farmer named john."},
+                {"role": "user", "content": "what is your name, and what do you do?"}],
+         Mary: [{"role": "user", "content": "what is your name, and what do you do?"},
+                {"role": "system", "content": "You are a farmer named john."},
+                {"role": "user", "content": "what is your name, and what do you do?"}],
+         Sue: [{"role": "user", "content": "what is your name, and what do you do?"},
+               {"role": "system", "content": "You are a farmer named john."},
+               {"role": "user", "content": "what is your name, and what do you do?"}]}
+
+
+
+
+def world_gen_test():
+    running = True
+
+    while running:
+        loc = location.new("city")
+        print(loc)
+
     return 0
 
 
-def test_3():
-    loc = location.new("city")
-    print(loc)
+def character_gen_test():
+    running = True
+
+    # Create new character
+    shopkeep_1 = character.new()
+    print(shopkeep_1)
+
+    # while running:
+
+    return 0
 
 
-test_3()
+test_2()
 
 # print(John)

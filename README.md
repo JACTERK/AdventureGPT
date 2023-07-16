@@ -115,5 +115,6 @@ and has the following attributes:
       - Example: ```['John', 'John is a farmer who lives in Centretown. He loves nature, and frequently likes going on walks through nature. He is kind and responds to other characters in a kind and relaxed tone. ' 'Farmer', 100, 10, 10, [], 'Centretown']```
 - Returns `c_list` (List): A list of `Character` objects.
 
-### `generate_id()`
-- Returns `id` (String): A randomly generated 8-digit id.
+## `character.py`
+
+### `new(desc="")`

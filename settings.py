@@ -1,13 +1,9 @@
 game_style = "fantasy RPG "
 
-demo_characters = []
-demo_desc = "A fantasy based RPG game. "
-demo_location = "Centretown, Northtown, Southtown, Easttown, Westtown, and the following zones: Forest, Plains, " \
-                "Mountains, Desert, and Ocean."
-
 default_characters = []
-default_desc = "A fantasy game."
-default_location = ""
+default_desc = "A fantasy based RPG game. "
+default_location = "Centretown, Northtown, Southtown, Easttown, Westtown, and the following zones: Forest, Plains, " \
+                "Mountains, Desert, and Ocean."
 
 character_details = "[NAME(String), ROLE(String), PERSONALITY(string), HEALTH(Int), ATTACK(Int), DEFENCE(Int), " \
                     "INVENTORY(List), LOCATION(String)]"
@@ -30,18 +26,6 @@ character_generation_prompt = (
 
 def get_game_style():
     return game_style
-
-
-def get_demo_characters():
-    return demo_characters
-
-
-def get_demo_desc():
-    return demo_desc
-
-
-def get_demo_location():
-    return demo_location
 
 
 def get_default_characters():

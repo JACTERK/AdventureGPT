@@ -1,16 +1,9 @@
 # Class defining a character in the game
 
-import functions, pickle, settings, ast
-
-
-# TODO: Possibly remove in place of the world load function
-# Function that takes a filename and returns the object stored in the file
-def load(filename):
-    try:
-        with open("save/" + filename + ".p", "rb") as f:
-            return pickle.load(f)
-    except Exception as ex:
-        print("Error during unpickling object (Possibly unsupported):", ex)
+import ast
+import functions
+import pickle
+import settings
 
 
 # Function that takes an integer 'num', and an optional string 'desc' and returns a list of 'num' character.
@@ -47,7 +40,7 @@ class Character:
         self.defense = defense
         self.inventory = inventory
         self.location = location
-        self.conversation = {}
+        self.chat_log = {}
 
     # Getters and Setters
 
@@ -75,8 +68,8 @@ class Character:
     def get_location(self):
         return self.location
 
-    def get_conversation(self):
-        return self.conversation
+    def get_chat_log(self):
+        return self.chat_log
 
     def set_name(self, name):
         self.name = name
@@ -102,23 +95,30 @@ class Character:
     def set_location(self, location):
         self.location = location
 
-    def set_conversation(self, conversation):
-        self.conversation = conversation
+    def set_chat_log(self, conversation):
+        self.chat_log = conversation
+
+    # Key is a character, value is a chat call ({'role': 'system', 'content': 'string'})
+    def add_to_chat_log(self, key, value):
+        self.chat_log[key].append(value)
 
     # String representation of the object
-
     def __str__(self):
         return "Entity: " + self.name + ", Role: " + self.role + ", Personality: " + self.personality + ", Health: " + str(
             self.health) + ", Attack: " + str(self.attack) + ", Defense: " + str(self.defense) + ", Inventory: " + str(
             self.inventory) + ", Location: " + str(self.location)
 
-    # TODO: Possibly remove this function to have the character saved in the world object.
-    # Save the character to a file named after the character's name
-    def save(self):
-        pickle.dump(self, open("save/" + self.name + ".p", "wb"))
-        print("Saved character to file: " + self.name + ".p")
-
     # Start a conversation with another character
     def talk_to(self, c):
         print("conv start with : " + c.get_name())
-        self.conversation += {c: []}
+        temp_msg = ""
+
+        # Checks to see if the conversation has already been started, if not append the personality of both characters
+        if len(self.chat_log[c]) == 0:
+            self.add_to_chat_log(c, {'role': 'system', 'content': self.get_personality()})
+            c.add_to_chat_log(self, {'role': 'system', 'content': c.get_personality()})
+
+        # If it has, call the OpenAI API to generate a response
+        else:
+            # temp_msg is a string
+            temp_msg = functions.generate(self.chat_log[c])
